@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Accordion from "../src/components/Accordion";
+import Search from "../src/components/Search";
+import Dropdown from "../src/components/Dropdown";
 
-function App() {
+const items = [
+  {
+    title: "A",
+    content: "Lorem Ipsum",
+  },
+  {
+    title: "B",
+    content: "Lorem Ipsum",
+  },
+  {
+    title: "C",
+    content: "Lorem Ipsum",
+  },
+];
+
+const options = [
+  {
+    label: "The Colour Red",
+    value: "red",
+  },
+  {
+    label: "The Colour Green",
+    value: "green",
+  },
+  {
+    label: "The Colour Blue",
+    value: "blue",
+  },
+];
+
+export default () => {
+  const [selected, setSelected] = useState(options[0]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* <Accordion items={items} /> */}
+      {/* <Search /> */}
+      <Dropdown
+        selected={selected}
+        onSelectedChange={setSelected}
+        options={options}
+      />
     </div>
   );
-}
-
-export default App;
+};
